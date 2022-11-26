@@ -39,3 +39,12 @@ resource "random_string" "suffix" {
   length  = 5
   special = false
 }
+
+
+terraform {
+  backend "s3" {
+    bucket    = "liontech-eks-cluster"
+    key       = "liontech/terraform.tfstate"
+    region    =  "us-east-2"
+  }
+}

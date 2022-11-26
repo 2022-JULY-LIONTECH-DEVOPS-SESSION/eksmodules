@@ -2,21 +2,21 @@ module "eks" {
   source                  = "./modules/eks"
   aws_public_subnet       = module.vpc.aws_public_subnet
   vpc_id                  = module.vpc.vpc_id
-  cluster_name            = "education-eks-${random_string.suffix.result}"
+  cluster_name            = "LION-TECH-EKS-CLUSTER-${random_string.suffix.result}"
   endpoint_public_access  = true
   endpoint_private_access = false
   public_access_cidrs     = ["0.0.0.0/0"]
-  node_group_name         = "luit"
-  scaling_desired_size    = 1
-  scaling_max_size        = 1
-  scaling_min_size        = 1
+  node_group_name         = "LIONTECH"
+  scaling_desired_size    = 2
+  scaling_max_size        = 2
+  scaling_min_size        = 2
   instance_types          = ["t3.small"]
-  key_pair                = "Ohio"
+  key_pair                = "cicd"
 }
 
 module "vpc" {
   source                  = "./modules/vpc"
-  tags                    = "Project"
+  tags                    = "liontech"
   instance_tenancy        = "default"
   vpc_cidr                = "10.0.0.0/16"
   access_ip               = "0.0.0.0/0"
